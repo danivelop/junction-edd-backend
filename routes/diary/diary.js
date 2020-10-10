@@ -80,13 +80,28 @@ exports.updateDiary = async (req, res, next) => {
 
     const updatedDiary = await Diary.findOne({
       where: { id: diaryId },
-      raw: true,
+      include: [{ model: Movie }],
     })
-    const updatedMovies = await Movie.findAll({
-      where: { diaryId },
-      raw: true,
+
+    return res.send(updatedDiary)
+  } catch(error) {
+    next(error)
+  }
+}
+
+exports.uploadImage = async (req, res, next) => {
+  const { diaryId } = req.body
+
+  try {
+    await Diary.update(
+      { image: req.file.path },
+      { where: { id: diaryId } },
+    )
+
+    const updatedDiary = await Diary.fineOne({
+      where: { id: diaryId },
+      include: [{ model: Movie }],
     })
-    updatedDiary.movies = updatedMovies
 
     return res.send(updatedDiary)
   } catch(error) {

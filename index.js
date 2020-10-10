@@ -11,6 +11,7 @@ const logger = require('./logger')
 const { sequelize } = require('./models')
 
 const authRouter = require('./routes/auth')
+const diaryRouter = require('./routes/diary')
 
 dotenv.config()
 
@@ -40,6 +41,7 @@ async function runServer () {
   app.use(cookieParser(process.env.COOKIE_SECRET))
 
   app.use('/api/auth', authRouter)
+  app.use('/api/diary', diaryRouter)
   
   app.use((err, req, res, next) => {
     logger.error(err.message)

@@ -44,7 +44,7 @@ exports.getDiaries = async (req, res, next) => {
     })
     return res.send(diaries)
   } catch(error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -85,7 +85,7 @@ exports.updateDiary = async (req, res, next) => {
 
     return res.send(updatedDiary)
   } catch(error) {
-    next(error)
+    return next(error)
   }
 }
 
@@ -105,6 +105,6 @@ exports.uploadImage = async (req, res, next) => {
 
     return res.send(updatedDiary)
   } catch(error) {
-    next(error)
+    return next(error)
   }
 }

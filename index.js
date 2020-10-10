@@ -12,6 +12,7 @@ const { sequelize } = require('./models')
 
 const authRouter = require('./routes/auth')
 const diaryRouter = require('./routes/diary')
+const rakutenRouter = require('./routes/rakuten')
 
 dotenv.config()
 
@@ -42,6 +43,7 @@ async function runServer () {
 
   app.use('/api/auth', authRouter)
   app.use('/api/diary', diaryRouter)
+  app.use('/api/rakuten', rakutenRouter)
   
   app.use((err, req, res, next) => {
     logger.error(err.message)

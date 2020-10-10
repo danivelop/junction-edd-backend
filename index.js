@@ -6,6 +6,7 @@ const path = require('path')
 const helmet = require('helmet')
 const hpp = require('hpp')
 const dotenv = require('dotenv')
+const cors = require('cors')
 const logger = require('./logger')
 const { sequelize } = require('./models')
 
@@ -32,6 +33,7 @@ async function runServer () {
     app.use(morgan('dev'))
   }
   
+  app.use(cors())
   app.use(express.static(path.join(__dirname, 'public')))
   app.use(express.json())
   app.use(express.urlencoded({ extended: false }))

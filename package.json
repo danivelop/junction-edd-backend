@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "start": "cross-env NODE_ENV=production pm2 index.js"
+    "start": "cross-env NODE_ENV=production pm2 start index.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "express": "^4.17.1",
     "helmet": "^4.1.1",
     "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "pm2": "^4.5.0",
